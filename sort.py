@@ -43,11 +43,29 @@ def bucket_sort(numbers, num_buckets=10):
     # TODO: Sort each bucket using any sorting algorithm (recursive or another)
     # TODO: Loop over buckets and append each bucket's numbers into output list
     # FIXME: Improve this to mutate input instead of creating new output list
+    output = []
+
     low = min(numbers)
     high = max(numbers)
 
-    buckets = [0] * ((low - high) // 2)
+    buckets = []
 
-    # for i in range(numbers)
+    for i in range(10):
+        buckets.append([])
+
+    for i in range(len(numbers)):
+      bucket = numbers[i] % 10 - 1
+      if bucket == -1:
+        bucket = 9
+      buckets[bucket].append(numbers[i])
+
+    
+    for i in range(len(buckets)):
+        sorted_bucket = buckets[i]
+       
+        output = output + sorted_bucket
+
+    return output
     
 # print(counting_sort([4, 7, 3, 4, 2]))
+print(bucket_sort([4, 7, 3, 4, 2, -10]))
